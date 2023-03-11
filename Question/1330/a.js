@@ -1,9 +1,6 @@
-const fs = require('fs');
-let input = fs.readFileSync('/dev/stdin', 'utf-8').trim().split('\n');
-const testcases = input;
+const makeTestCase = require('../../Utils/MakeTestCase');
 
-solution(testcases);
-
+const testcases = makeTestCase();
 function solution(testcases) {
 	const value = testcases[0].split(' ');
 	const num1 = Number(value[0]);
@@ -21,3 +18,5 @@ function solution(testcases) {
 		return;
 	}
 }
+
+solution(testcases);
