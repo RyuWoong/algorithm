@@ -12,4 +12,5 @@
 <br/>
 <br/>
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white">
+
 [![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=wjdfbd1121)](https://solved.ac/wjdfbd1121/)
