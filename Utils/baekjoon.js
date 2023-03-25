@@ -1,23 +1,20 @@
 const fs = require('fs');
-let input = fs.readFileSync('/dev/stdin', 'utf-8').trim().split('\n');
+let input = fs.readFileSync('/dev/stdin', 'utf-8').split('\n');
 const testcases = input;
 
 function solution(testcases) {
-	const length = Number(testcases[0]);
-	const list = testcases.slice(1).map((i) => i.split(' ').map((j) => Number(j)));
-	const temp = new Array(length).fill(null).map((_, index) => Array.from({ length: index + 1 }).fill(0));
-	temp[0] = [...list[0]];
-	for (let i = 0; i < length - 1; i++) {
-		for (let j = 0; j < list[i].length; j++) {
-			const prev = temp[i][j];
-			const num1 = list[i + 1][j];
-			const num2 = list[i + 1][j + 1];
-			temp[i + 1][j] = Math.max(temp[i + 1][j], prev + num1);
-			temp[i + 1][j + 1] = Math.max(temp[i + 1][j + 1], prev + num2);
-		}
-	}
+	const list = testcases
+		.map((item) => {
+			const [length, str] = item.split(' ');
+			if (!str) {
+				return '';
+			}
+			const answer = [...str].map((item) => String(item).repeat(Number(length)));
+			return answer.join('');
+		})
+		.filter((item) => item !== '');
 
-	console.log(Math.max(...temp[temp.length - 1]));
+	console.log(list.join('\n'));
 }
 
 solution(testcases);
