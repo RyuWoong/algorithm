@@ -1,6 +1,6 @@
-const fs = require("fs");
-let input = fs.readFileSync("/dev/stdin", "utf-8").trim().split("\n");
-const testcases = input;
+const makeTestCase = require("../../Utils/MakeTestCase");
+
+const testcases = makeTestCase();
 
 function solution(testcases) {
   const tc = testcases[0];
