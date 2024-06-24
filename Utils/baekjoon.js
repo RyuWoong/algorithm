@@ -1,49 +1,44 @@
 const fs = require("fs");
-let input = fs.readFileSync("/dev/stdin", "utf-8").trim().split("\n");
+let input = fs.readFileSync(0, "utf-8").trim().split("\n");
 const testcases = input;
 
 function solution(testcases) {
-  // 정답 작성
-  let count = 1;
-  let result = 666;
-  let incount = 1;
-  let i = 0;
-  // 666 1666 2666 3666 4666 5666 6660 6661 6662 6663 6664 6665 6666 6667 6668 6669 7666 8666 9666 10666 11666 12666 13666 14666 15666 16660
-  while (count < Number(testcases[0])) {
-    if (incount % 1000 == 666) {
-      result =
-        i > 100
-          ? `${incount}${i}`
-          : i > 10
-          ? `${incount}0${i}`
-          : `${incount}00${i}`;
-      count += 1;
-      i += 1;
-      if (i === 1000) {
-        incount += 1;
-      }
-    } else if (incount % 100 == 66) {
-      result = i > 10 ? `${incount}6${i}` : `${incount}60${i}`;
-      count += 1;
-      i += 1;
-      if (i === 100) {
-        incount += 1;
-      }
-    } else if (incount % 10 === 6) {
-      result = `${incount}66${i}`;
-      count += 1;
-      i += 1;
-      if (i === 10) {
-        incount += 1;
-      }
-    } else {
-      result = incount + `${666}`;
-      i = 0;
-      count += 1;
-      incount += 1;
-    }
+  // 5와 3으로 나누어 지는지 확인한다.
+  // 5로 시도하고, 나머지는 3으로 시도한다.
+  // 둘다 안된다면 -1
+  const testcase = Number(testcases[0]);
+  const fivekg1 = testcase % 5;
+  const threekg1 = testcase % 3;
+
+  if (fivekg1 === 0) {
+    console.log(testcase / 5);
+    return;
   }
 
-  console.log(result);
+  if (fivekg1 % 3 === 0) {
+    console.log(Math.floor(testcase / 5) + fivekg1 / 3);
+    return;
+  }
+
+  if (testcase > 10) {
+    if (fivekg1 === 1 || fivekg1 === 4) {
+      const fivekgcount = Math.floor(testcase / 5) - 1;
+      const threekgcount = (testcase - fivekgcount * 5) / 3;
+      console.log(fivekgcount + threekgcount);
+      return;
+    }
+    if (fivekg1 === 2) {
+      const fivekgcount = Math.floor(testcase / 5) - 2;
+      const threekgcount = (testcase - fivekgcount * 5) / 3;
+      console.log(fivekgcount + threekgcount);
+      return;
+    }
+  }
+  if (threekg1 === 0) {
+    console.log(testcase / 3);
+    return;
+  }
+  console.log(-1);
 }
+
 solution(testcases);

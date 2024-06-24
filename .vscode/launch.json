@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "Launch Program",
+      "program": "${file}",
+      "cwd": "${fileDirname}",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node"
+    }
+  ]
+}
