@@ -1,5 +1,6 @@
-const fs = require("fs");
-const input = fs.readFileSync(0, "utf-8").trim().split("\n");
+const makeTestCase = require("../../Utils/MakeTestCase");
+
+const testcases = makeTestCase();
 
 function solution(testcases) {
   const [end, ...list] = testcases;
@@ -27,4 +28,4 @@ function solution(testcases) {
   console.log(board[endX][endY]);
 }
 
-solution(input);
+solution(testcases);
